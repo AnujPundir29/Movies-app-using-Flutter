@@ -1,0 +1,34 @@
+The things we are going to learn :
+
+a) Using the HTTP library to retrieve data from a web service
+b) Parsing JSON data and transforming it into model objects
+c) Adding a ListView to show data
+d) Showing a detail screen and passing data through screens
+
+So we will be using Web API to build a server client app ,generally  data are XMl or JSON.
+
+My API detail:
+
+API Key (v3 auth)
+10a53c4df6a53e45442a5a721aebd682
+
+Example API Request
+https://api.themoviedb.org/3/movie/550?api_key=10a53c4df6a53e45442a5a721aebd682
+
+API Read Access Token (v4 auth)
+eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMGE1M2M0ZGY2YTUzZTQ1NDQyYTVhNzIxYWViZDY4MiIsInN1YiI6IjVmNzc1ZjY4OTQ0YTU3MDAzNGM4NWFlZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ml0XDFY1AseEbHltRr35q3NVV2ZjPAIo46xsJsmLsR4
+
+
+Doing things means doing more task concurrently to do more problems at a same amount of time like reading and writing to web at same time.
+This thing is also known as async. programming.
+To perform asynchronous operations in Flutter, you can use the Future class and the async, await, and then keywords.
+Future represnt here is that it can wait for its result i.e when a function returns a future it means it will wait for the result to be ready.
+Here Future<String> means it will wait for its result and when the result is ready it will return a string without interreputing other processes.
+In the function getUpcoming we are using async it is not necessary but we use it when we use await in the body of a function.
+
+The get method of http return a future that contains response.
+Response has statuscode and body , statuscode is used to verify if the it is possible to get the data(code 200) from the web and body contains the data.
+
+we get the full JSON (the lemon box) from the web service (the store)with http.get(upcoming);
+we only take the movies (only the lemons, we don't need the box)with jsonResponse['results'];.
+We then transform the dynamic objects into movies(from lemon to lemonade) with moviesMap.map((i) => Movie.fromJson(i)).toList().
